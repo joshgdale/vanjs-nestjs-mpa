@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}} | Admin Panel</title>
+  </head>
+  <body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vanjs-org/van/public/van-1.5.2.nomodule.debug.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vanjs-ext@0.6.1/dist/van-x.nomodule.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+     <script type="text/javascript">
+      const { a, div, li, p, ul, form, label, input, img, h1, h2, button, textarea, canvas } = van.tags
+
+      const state = vanX.reactive({{{ json data }}})
+      
+      {{#if debugData}}
+        console.log({{{ json data }}});
+      {{/if}}
+    </script>
+
+    
+    <script type="text/javascript" src="/client/root.js"></script>
+    {{#each components}}
+      <script type="text/javascript" src="/client/{{ this }}"></script>
+    {{/each}}
+    <script>
+      function init() {
+        van.add(document.body, Root());
+      }
+
+      document.addEventListener("load", init())
+    </script>
+   
+  </body>
+</html>
